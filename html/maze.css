@@ -1,0 +1,60 @@
+:root {
+  --block-size: 30px;
+  --dot-size: calc(var(--block-size) / 6);
+  --player-size: calc(var(--block-size) / 3 * 2);
+  --ghost-size: var(--player-size);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+#gameView.gameon {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, var(--block-size));
+  grid-template-rows: repeat(10, var(--block-size));
+  gap: 0px;
+  background-color: black;
+}
+
+.cell {
+  width: var(--block-size);
+  height: var(--block-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.wall {
+  background: darkblue;
+}
+
+.player {
+  height: var(--player-size);
+  width: var(--player-size);
+  border-radius: 50%;
+  background-color: #ffea00;
+  margin: auto;
+}
+
+.dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background-color: #FFD700;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.ghost {
+  width: var(--ghost-size);
+  height: var(--ghost-size);
+  background-color: #ff0000;
+  border-radius: 50%;
+  margin: auto;
+}
