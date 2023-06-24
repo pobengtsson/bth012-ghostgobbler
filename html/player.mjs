@@ -1,8 +1,5 @@
 export class Player {
    constructor(){
-      this.xPosition = 8
-      this.yPosition = 8
-      this.facing = 'left'
       this.score = 0
       this.highScore = 0
    }
@@ -13,6 +10,11 @@ export class Player {
       this.xPosition = coord.x
       this.yPosition = coord.y
    }
+
+   addScore(value) {
+      this.score += value
+   }
+
    nextCoordinates(direction) {
       switch (direction) {
          case 'ArrowUp':
@@ -23,6 +25,8 @@ export class Player {
             return {x: this.xPosition-1, y: this.yPosition}
          case 'ArrowRight':
             return {x: this.xPosition+1, y: this.yPosition}
+         default:
+            throw new Error('Unknown direction')
       }
    }
 }

@@ -21,20 +21,6 @@ export const mazeVal = {
   GHOST: 60,
 }
 
-export var template = [
-  [{ val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 0 }],
-  [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 50 }, { val: 0 }],
-  [{ val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }]
-]
-
-
 function isUndefined(val) { return !val }
 function isEmptyOrSingleRow(template) { return template.length < 2 }
 function allValidRows(template) {

@@ -1,15 +1,19 @@
-import { GameMap, template, mazeVal } from "../maze.mjs";
+import { GameMap, mazeVal } from "../maze.mjs";
+import { level1 } from "../level.mjs";
 
 export class GameOnState {
    constructor(game, screenElem, player) {
       this.game = game;
       this.screenElem = screenElem
       this.player = player
+      this.level = level1
    }
 
    async loadView() {
       this.screenElem.classList = ["gameon"]
-      this.map = new GameMap(template)
+      this.map = new GameMap(this.level.mapTemplate)
+      this.player.position = this.level.playerStartPosition
+      this.map.setValAtPosition(mazeVal.PLAYER, this.player.position.x, this.player.position.y)
       this.screenElem.apply(this.map)
    }
 
