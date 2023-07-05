@@ -16,7 +16,6 @@ export class GameOnState {
       this.gameScreen.classList = ["gameon"]
       this.gameMap = new GameMap(this.level.mapTemplate)
       this.player.position = this.level.playerStartPosition
-      this.gameMap.setValAtPosition(mazeVal.PLAYER, this.player.position.x, this.player.position.y)
       this.gameScreen.apply(this.gameMap)
    }
 

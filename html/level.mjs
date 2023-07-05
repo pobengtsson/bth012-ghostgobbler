@@ -9,7 +9,7 @@ export const level1 = {
       [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 0 }],
       [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
       [{ val: 0 }, { val: 3 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 0 }],
-      [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
+      [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 50 }, { val: 0 }],
       [{ val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }]
    ],
    playerStartPosition: { x: 8, y: 8 },

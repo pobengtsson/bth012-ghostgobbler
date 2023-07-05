@@ -9,7 +9,6 @@ describe('GameOnState', ()=> {
       var mockScreen
       beforeEach(()=>{
          mockPlayer = {
-            position: {x: 8, y: 8},
             addScore: jest.fn(),
             score: 687
          }
@@ -21,7 +20,7 @@ describe('GameOnState', ()=> {
          gameonstate = new GameOnState({}, mockScreen, mockPlayer)
       })
       it('has remaining dot count', () => {
-         expect(gameonstate.remainingDots).toEqual(43)
+         expect(gameonstate.remainingDots).toEqual(42)
       })
       it('has remaining power dot count', () => {
          expect(gameonstate.remainingPowerDots).toEqual(2)
@@ -39,6 +38,9 @@ describe('GameOnState', ()=> {
                nextCoordinates: jest.fn(),
                moveFromTo: jest.fn(),
             }
+         })
+         it('sets the player position from the level', () => {
+            expect(mockPlayer.position).toEqual({x: 8, y: 8})
          })
          describe('when player makes a valid move', () =>{
             let event

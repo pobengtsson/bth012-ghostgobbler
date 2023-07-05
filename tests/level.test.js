@@ -23,5 +23,8 @@ describe('level1', ()=> {
    it('has powerdotscore', ()=>{
       expect(level1.powerDotScore).toEqual(50)
    })
+   it('has playerStartingPosition', ()=> {
+      expect(level1.playerStartPosition).toEqual({x: 8, y: 8})
+   })
 })
 
