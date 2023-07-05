@@ -51,18 +51,23 @@ describe('GameOnState', ()=> {
             })
             describe('when handle event', () => {
                const examples = [
-                  {eventKey: 'ArrowUp', start: {x: 5, y: 5}, expectTo: {x: 7, y: 2}},
-                  {eventKey: 'ArrowDown', start: {x: 6, y: 6}, expectTo: {x: 5, y: 3}},
-                  {eventKey: 'ArrowLeft', start: {x: 2, y: 3}, expectTo: {x: 2, y: 8}},
-                  {eventKey: 'ArrowRight', start: {x: 7, y: 3}, expectTo: {x: 4, y: 8}},
+                  {gameOver: false, eventKey: 'ArrowUp', start: {x: 5, y: 5}, expectTo: {x: 7, y: 2}},
+                  {gameOver: false, eventKey: 'ArrowDown', start: {x: 6, y: 6}, expectTo: {x: 5, y: 3}},
+                  {gameOver: false, eventKey: 'ArrowLeft', start: {x: 2, y: 3}, expectTo: {x: 2, y: 8}},
+                  {gameOver: false, eventKey: 'ArrowRight', start: {x: 7, y: 3}, expectTo: {x: 4, y: 8}},
+                  {gameOver: true, eventKey: 'ArrowUp', start: {x: 5, y: 5}, expectTo: {x: 5, y: 5}},
+                  {gameOver: true, eventKey: 'ArrowDown', start: {x: 6, y: 6}, expectTo: {x: 6, y: 6}},
+                  {gameOver: true, eventKey: 'ArrowLeft', start: {x: 2, y: 3}, expectTo: {x: 2, y: 3}},
+                  {gameOver: true, eventKey: 'ArrowRight', start: {x: 7, y: 3}, expectTo: {x: 7, y: 3}},
                ]
 
                for (let ex of examples) {
-                  describe(ex.eventKey, ()=> {
+                  describe(`${ex.eventKey} and gameOver is ${ex.gameOver}`, ()=> {
                      beforeEach(()=>{
                         mockMap.nextCoordinates.mockReturnValue({x: ex.expectTo.x, y: ex.expectTo.y}),
                         mockPlayer.position = {x: ex.start.x, y: ex.start.y}
                         event.key = ex.eventKey
+                        gameonstate.gameOver = ex.gameOver
                         gameonstate.handleEvent(event)
                      })
                      it('calls preventDefault', () => {
@@ -71,24 +76,36 @@ describe('GameOnState', ()=> {
                      it('calls stop propagation', () => {
                         expect(event.stopPropagation).toHaveBeenCalled()
                      })
-                     it('moves the player', ()=> {
-                        expect(mockPlayer.position).toEqual(ex.expectTo)
-                     })
-                     it('updates the view', () => {
-                        expect(mockScreen.update).toHaveBeenCalled()
-                     })
-                     it('updates the view with the latest gamemap', () => {
-                        expect(mockScreen.update.mock.calls[0][0]).toBe(mockMap)
-                     })
-                     it('moves the player on the map', () => {
-                        expect(mockMap.moveFromTo).toHaveBeenCalled()
-                     })
-                     it('moves the player from 8,8', () => {
-                        expect(mockMap.moveFromTo.mock.calls[0][0]).toEqual(ex.start)
-                     })
-                     it('moves the player to 77,13', () => {
-                        expect(mockMap.moveFromTo.mock.calls[0][1]).toEqual(ex.expectTo)
-                     })
+                     if (ex.gameOver) {
+                        it('does not update the player position', ()=> {
+                           expect(mockPlayer.position).toEqual(ex.expectTo)
+                        })
+                        it('does not update the view', () => {
+                           expect(mockScreen.update).not.toHaveBeenCalled()
+                        })
+                        it('does not move the player on the map', () => {
+                           expect(mockMap.moveFromTo).not.toHaveBeenCalled()
+                        })
+                     } else {
+                        it('updates the player position', ()=> {
+                           expect(mockPlayer.position).toEqual(ex.expectTo)
+                        })
+                        it('updates the view', () => {
+                           expect(mockScreen.update).toHaveBeenCalled()
+                        })
+                        it('updates the view with the latest gamemap', () => {
+                           expect(mockScreen.update.mock.calls[0][0]).toBe(mockMap)
+                        })
+                        it('moves the player on the map', () => {
+                           expect(mockMap.moveFromTo).toHaveBeenCalled()
+                        })
+                        it('moves the player from 8,8', () => {
+                           expect(mockMap.moveFromTo.mock.calls[0][0]).toEqual(ex.start)
+                        })
+                        it('moves the player to 77,13', () => {
+                           expect(mockMap.moveFromTo.mock.calls[0][1]).toEqual(ex.expectTo)
+                        })
+                     }
                   })
                }
             })

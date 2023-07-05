@@ -29,7 +29,7 @@ export class GameOnState {
             case 'ArrowUp':
                event.preventDefault()
                event.stopPropagation()
-               if (this.gameMap.isValidPlayerMove(this.player.position, event.key)) {
+               if (!this.gameOver && this.gameMap.isValidPlayerMove(this.player.position, event.key)) {
                   const nextPosition = this.gameMap.nextCoordinates(this.player.position, event.key)
                   const atTargetPosition = this.gameMap.getValAtPosition(nextPosition.x, nextPosition.y)
                   this.gameMap.moveFromTo(this.player.position, nextPosition)
