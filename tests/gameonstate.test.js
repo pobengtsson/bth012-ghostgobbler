@@ -26,6 +26,9 @@ describe('GameOnState', ()=> {
       it('has remaining power dot count', () => {
          expect(gameonstate.remainingPowerDots).toEqual(2)
       })
+      it('has gameOver set to false', () => {
+         expect(gameonstate.gameOver).toEqual(false)
+      })
       describe('when loadView', () =>{
          let mockMap
          beforeEach(()=> {
@@ -91,8 +94,12 @@ describe('GameOnState', ()=> {
             })
             describe('when moving into', ()=> {
                const examples = [{val: mazeVal.DOT, score: 5}, {val: mazeVal.POWERDOT, score: 50}]
-               for (var ex of examples) {
+               var expectedDotCount
+               var expectedPowerDotCount
+               for (let ex of examples) {
                   beforeEach(()=>{
+                     expectedDotCount = gameonstate.remainingDots - 1
+                     expectedPowerDotCount = gameonstate.remainingPowerDots - 1
                      event.key = 'ArrowUp'
                      mockMap.nextCoordinates.mockReturnValue({x: 5, y: 5})
                   })
@@ -104,6 +111,18 @@ describe('GameOnState', ()=> {
                      it('increases the score', () => {
                         expect(mockPlayer.addScore).toHaveBeenCalled()
                      })
+                     switch (ex.val) {
+                        case mazeVal.DOT:
+                           it('decreases the remaining dot count by one', ()=>{
+                              expect(gameonstate.remainingDots).toEqual(expectedDotCount)
+                           })
+                           break
+                        case mazeVal.POWERDOT:
+                           it('decreases the remaining powerdot count by one', () => {
+                              expect(gameonstate.remainingPowerDots).toEqual(expectedPowerDotCount)
+                           })
+                           break
+                     }
                      it('increases the score with level.dotScore', () => {
                         expect(mockPlayer.addScore.mock.calls[0][0]).toEqual(ex.score)
                      })
@@ -113,9 +132,17 @@ describe('GameOnState', ()=> {
                      it('updates the player-score on the screen', () => {
                         expect(mockScreen.updateScore).toHaveBeenCalled()
                      })
+                     it('does not set game over', () => {
+                        expect(gameonstate.gameOver).toEqual(false)
+                     })
                      describe('when all dots are consumed', () => {
-                        it('disables the movement of the player avatar', ()=>{
-
+                        beforeEach(()=> {
+                           gameonstate.remainingDots = ex.val == mazeVal.DOT ? 1 : 0
+                           gameonstate.remainingPowerDots = ex.val == mazeVal.POWERDOT ? 1 : 0
+                           gameonstate.handleEvent(event)
+                        })
+                        it('sets gameOver', ()=>{
+                           expect(gameonstate.gameOver).toEqual(true)
                         })
                         it('shows you won banner', () => {
 

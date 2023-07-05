@@ -9,6 +9,7 @@ export class GameOnState {
       this.level = level1
       this.remainingDots = countCells(mazeVal.DOT, level1.mapTemplate)
       this.remainingPowerDots = countCells(mazeVal.POWERDOT, level1.mapTemplate)
+      this.gameOver = false
    }
 
    async loadView() {
@@ -36,12 +37,15 @@ export class GameOnState {
                   switch (atTargetPosition) {
                      case mazeVal.DOT:
                         this.player.addScore(this.level.dotScore)
+                        this.remainingDots -= 1
                         break
                      case mazeVal.POWERDOT:
                         this.player.addScore(this.level.powerDotScore)
+                        this.remainingPowerDots -= 1
                         break
                   }
                   this.gameScreen.updateScore(this.player.score)
+                  this.gameOver = (this.remainingDots + this.remainingPowerDots == 0) ? true : false
                } else {
                   break update_based_on_event
                }
