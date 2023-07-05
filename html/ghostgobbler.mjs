@@ -3,6 +3,7 @@ import { Game } from './game.mjs'
 import { Screen } from './screen.mjs'
 
 const player = new Player()
-const screenElem = new Screen(document.getElementById('gameView'))
-const game = new Game(screenElem, player)
+const gameScreen = new Screen(document.getElementById('gameView'))
+let game = new Game(gameScreen, player)
+game.setState(game.startState())
 

@@ -1,16 +1,18 @@
 import { GameOnState } from './states/gameonstate.mjs';
 import { WelcomeState } from './states/welcomestate.mjs';
+import { GameWonState } from './states/gamewonstate.mjs';
 
 export class Game {
-   constructor(screenElem, player) {
+   constructor(gameScreen, player) {
       this.player = player
-      this.screenElem = screenElem
-      const startState = new WelcomeState(this, screenElem)
-      this.setState(startState)
+      this.gameScreen = gameScreen
+   }
+
+   startState() {
+      return new WelcomeState(this, this.gameScreen)
    }
 
    async setState(state) {
-      console.log(`Setting game state to: ${state.constructor.name}`)
       this.state = state
       if (this.handleEvent) {
          window.removeEventListener('keydown', this.handleEvent)
@@ -25,9 +27,7 @@ export class Game {
    }
 
    startGame() {
-      // set up game or any other setup you want to do
-      console.log('Game Started')
-      this.setState(new GameOnState(this, this.screenElem, this.player))
+      this.setState(new GameOnState(this, this.gameScreen, this.player))
    }
 
    pauseGame() {
@@ -42,9 +42,7 @@ export class Game {
       this.setState(new GameLostState(this))
    }
 
-   wonGame() {
-      // game won scenario
-      console.log('Game Won')
-      this.setState(new GameWonState(this))
+   gameWon(lastScore) {
+      this.setState(new GameWonState(this, lastScore))
    }
 }

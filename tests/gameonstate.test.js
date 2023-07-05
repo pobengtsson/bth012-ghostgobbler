@@ -1,6 +1,6 @@
-import {jest} from '@jest/globals';
+import {jest} from '@jest/globals'
 import { GameOnState } from "states/gameonstate"
-import { mazeVal, mazeKey } from '../html/gamemap.mjs';
+import { mazeVal, mazeKey } from '../html/gamemap.mjs'
 
 describe('GameOnState', ()=> {
    describe('when created', ()=>{
