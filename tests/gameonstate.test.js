@@ -7,6 +7,7 @@ describe('GameOnState', ()=> {
       var gameonstate
       var mockPlayer
       var mockScreen
+      var mockGame
       beforeEach(()=>{
          mockPlayer = {
             addScore: jest.fn(),
@@ -17,7 +18,10 @@ describe('GameOnState', ()=> {
             update: jest.fn(),
             updateScore: jest.fn(),
          }
-         gameonstate = new GameOnState({}, mockScreen, mockPlayer)
+         mockGame = {
+            gameWon: jest.fn()
+         }
+         gameonstate = new GameOnState(mockGame, mockScreen, mockPlayer)
       })
       it('has remaining dot count', () => {
          expect(gameonstate.remainingDots).toEqual(42)
@@ -155,7 +159,10 @@ describe('GameOnState', ()=> {
                         expect(gameonstate.gameOver).toEqual(false)
                      })
                      describe('when all dots are consumed', () => {
+                        var expectedScore
                         beforeEach(()=> {
+                           expectedScore = 349
+                           mockPlayer.score = expectedScore
                            gameonstate.remainingDots = ex.val == mazeVal.DOT ? 1 : 0
                            gameonstate.remainingPowerDots = ex.val == mazeVal.POWERDOT ? 1 : 0
                            gameonstate.handleEvent(event)
@@ -163,26 +170,11 @@ describe('GameOnState', ()=> {
                         it('sets gameOver', ()=>{
                            expect(gameonstate.gameOver).toEqual(true)
                         })
-                        it('shows you won banner', () => {
-
+                        it('calls gameWon on the game', () => {
+                           expect(mockGame.gameWon).toHaveBeenCalled()
                         })
-                        describe('when player presses a key', () => {
-                           it('sets the welcome state', () => {
-
-                           })
-                           it('sets the last score', () => {
-
-                           })
-                           describe('when score is higher than highscore', ()=>{
-                              it('sets the score as highscore', () => {
-
-                              })
-                           })
-                           describe('when score is same or lower than high score', () => {
-                              it('has same high score as before', () => {
-
-                              })
-                           })
+                        it('calls gameWon with the score', () => {
+                           expect(mockGame.gameWon.mock.calls[0][0]).toEqual(expectedScore)
                         })
                      })
                   })

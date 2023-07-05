@@ -64,6 +64,9 @@ export class GameOnState {
                break
          }
          this.gameScreen.update(this.gameMap)
+         if (this.gameOver) {
+            this.game.gameWon(this.player.score)
+         }
       }
    }
 }
