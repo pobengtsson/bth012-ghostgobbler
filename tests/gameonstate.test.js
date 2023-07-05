@@ -150,6 +150,9 @@ describe('GameOnState', ()=> {
                      it('moves the player on the map', () => {
                         expect(mockMap.moveFromTo).not.toHaveBeenCalled()
                      })
+                     it('does not add to the score', () => {
+                        expect(mockPlayer.addScore).not.toHaveBeenCalled()
+                     })
                   })
                }
             })
