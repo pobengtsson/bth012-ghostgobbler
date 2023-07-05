@@ -17,5 +17,11 @@ describe('level1', ()=> {
          expect(level1.playerStartPosition.y).toEqual(8)
       })
    })
+   it('has dotscore', ()=>{
+      expect(level1.dotScore).toEqual(5)
+   })
+   it('has powerdotscore', ()=>{
+      expect(level1.powerDotScore).toEqual(50)
+   })
 })
 

@@ -15,18 +15,5 @@ export class Player {
       this.score += value
    }
 
-   nextCoordinates(direction) {
-      switch (direction) {
-         case 'ArrowUp':
-            return {x: this.xPosition, y: this.yPosition-1}
-         case 'ArrowDown':
-            return {x: this.xPosition, y: this.yPosition+1}
-         case 'ArrowLeft':
-            return {x: this.xPosition-1, y: this.yPosition}
-         case 'ArrowRight':
-            return {x: this.xPosition+1, y: this.yPosition}
-         default:
-            throw new Error('Unknown direction')
-      }
-   }
+
 }

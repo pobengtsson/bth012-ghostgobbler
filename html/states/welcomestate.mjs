@@ -11,11 +11,10 @@ export class WelcomeState {
       this.screen.htmlTemplate = welcomeScreenHtml;
    }
 
-   // remember that in the handleEvent this is bound to the Game instance.
    handleEvent(event) {
       console.log(`Received event: ${event.key}`)
       if (event.key === " ") {
-         this.startGame();
+         this.game.startGame();
       }
    }
 }

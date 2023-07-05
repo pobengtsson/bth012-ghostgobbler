@@ -44,35 +44,5 @@ describe('player', ()=> {
             })
          })
       })
-      describe('nextCoordinates', ()=> {
-         const start = {x: 100, y: 100}
-         const examples = [
-            {dir: 'ArrowUp', x: start.x, y: start.y-1},
-            {dir: 'ArrowDown', x: start.x, y: start.y+1},
-            {dir: 'ArrowLeft', x: start.x-1, y: start.y},
-            {dir: 'ArrowRight', x: start.x+1, y: start.y},
-         ]
-         for (let ex of examples) {
-            describe(`in direction ${ex.dir}`, ()=>{
-               var actualPos
-               beforeEach(()=>{
-                  player.position = start
-                  actualPos = player.nextCoordinates(ex.dir)
-               })
-               it(`sets x to ${ex.x}`, ()=>{
-                  expect(actualPos.x).toEqual(ex.x)
-               })
-               it(`sets y to ${ex.y}`, ()=>{
-                  expect(actualPos.y).toEqual(ex.y)
-               })
-            })
-         }
-         describe('other directions', ()=> {
-            it('throws exception', ()=>{
-               expect( ()=> player.nextCoordinates('')).toThrow('Unknown direction')
-            })
-         })
-      })
-
    })
 })

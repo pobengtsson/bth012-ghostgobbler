@@ -15,7 +15,7 @@ export class Game {
       if (this.handleEvent) {
          window.removeEventListener('keydown', this.handleEvent)
       }
-      this.handleEvent = this.state.handleEvent.bind(this)
+      this.handleEvent = this.state.handleEvent.bind(this.state)
       window.addEventListener('keydown', this.handleEvent)
       try {
          await this.state.loadView()

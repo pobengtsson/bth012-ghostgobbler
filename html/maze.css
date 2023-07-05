@@ -1,6 +1,7 @@
 :root {
-  --block-size: 30px;
+  --block-size: 7vh;
   --dot-size: calc(var(--block-size) / 6);
+  --powerdot-size: calc(var(--block-size) / 4);
   --player-size: calc(var(--block-size) / 3 * 2);
   --ghost-size: var(--player-size);
 }
@@ -14,6 +15,11 @@ body {
 }
 
 #gameView.gameon {
+  display: grid;
+  grid-template-rows: 10% 90%;
+}
+
+#screen {
   position: relative;
   display: grid;
   grid-template-columns: repeat(10, var(--block-size));
@@ -51,10 +57,38 @@ body {
   margin: auto;
 }
 
+.powerdot {
+  width: var(--powerdot-size);
+  height: var(--powerdot-size);
+  background-color: #ffa600;
+  border-radius: 50%;
+  margin: auto;
+}
+
 .ghost {
   width: var(--ghost-size);
   height: var(--ghost-size);
   background-color: #ff0000;
   border-radius: 50%;
   margin: auto;
+}
+
+.topbar {
+  color: white;
+  font-family: 'Press_Start_2P';
+  font-size: 2vh;
+}
+
+.score {
+  float: left;
+  text-align: left;
+}
+
+.topbar > .high-score {
+  float: right;
+  text-align: right;
+}
+
+#player-score {
+  margin: 1vh;
 }
