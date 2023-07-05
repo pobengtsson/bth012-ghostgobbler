@@ -7,6 +7,8 @@ export class GameOnState {
       this.gameScreen = gameScreen
       this.player = player
       this.level = level1
+      this.remainingDots = countCells(mazeVal.DOT, level1.mapTemplate)
+      this.remainingPowerDots = countCells(mazeVal.POWERDOT, level1.mapTemplate)
    }
 
    async loadView() {
@@ -35,7 +37,7 @@ export class GameOnState {
                      case mazeVal.DOT:
                         this.player.addScore(this.level.dotScore)
                         break
-                     case mazeVal.POWER_DOT:
+                     case mazeVal.POWERDOT:
                         this.player.addScore(this.level.powerDotScore)
                         break
                   }
@@ -63,3 +65,7 @@ export class GameOnState {
    }
 }
 
+function countCells(val, template) {
+   return template.flatMap((cell) => cell)
+      .reduce((acc, cell) => { return cell.val == val ? acc + 1 : acc }, 0)
+}

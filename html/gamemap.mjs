@@ -15,7 +15,7 @@ export const mazeVal = {
   WALL: 0,
   EMPTY: 1,
   DOT: 2,
-  POWER_DOT: 3,
+  POWERDOT: 3,
   TRANSPORTER: 10,
   PLAYER: 50,
   GHOST: 60,

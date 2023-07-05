@@ -1,6 +1,6 @@
 import {jest} from '@jest/globals';
 import { GameOnState } from "states/gameonstate"
-import { mazeVal } from '../html/gamemap.mjs';
+import { mazeVal, mazeKey } from '../html/gamemap.mjs';
 
 describe('GameOnState', ()=> {
    describe('when created', ()=>{
@@ -19,6 +19,12 @@ describe('GameOnState', ()=> {
             updateScore: jest.fn(),
          }
          gameonstate = new GameOnState({}, mockScreen, mockPlayer)
+      })
+      it('has remaining dot count', () => {
+         expect(gameonstate.remainingDots).toEqual(43)
+      })
+      it('has remaining power dot count', () => {
+         expect(gameonstate.remainingPowerDots).toEqual(2)
       })
       describe('when loadView', () =>{
          let mockMap
@@ -84,13 +90,13 @@ describe('GameOnState', ()=> {
                }
             })
             describe('when moving into', ()=> {
-               const examples = [{val: mazeVal.DOT, score: 5}, {val: mazeVal.POWER_DOT, score: 50}]
+               const examples = [{val: mazeVal.DOT, score: 5}, {val: mazeVal.POWERDOT, score: 50}]
                for (var ex of examples) {
                   beforeEach(()=>{
                      event.key = 'ArrowUp'
                      mockMap.nextCoordinates.mockReturnValue({x: 5, y: 5})
                   })
-                  describe('a dot', ()=> {
+                  describe(`a ${mazeKey[ex.val]}`, ()=> {
                      beforeEach(() => {
                         mockMap.getValAtPosition.mockReturnValue(ex.val)
                         gameonstate.handleEvent(event)
@@ -107,8 +113,35 @@ describe('GameOnState', ()=> {
                      it('updates the player-score on the screen', () => {
                         expect(mockScreen.updateScore).toHaveBeenCalled()
                      })
+                     describe('when all dots are consumed', () => {
+                        it('disables the movement of the player avatar', ()=>{
+
+                        })
+                        it('shows you won banner', () => {
+
+                        })
+                        describe('when player presses a key', () => {
+                           it('sets the welcome state', () => {
+
+                           })
+                           it('sets the last score', () => {
+
+                           })
+                           describe('when score is higher than highscore', ()=>{
+                              it('sets the score as highscore', () => {
+
+                              })
+                           })
+                           describe('when score is same or lower than high score', () => {
+                              it('has same high score as before', () => {
+
+                              })
+                           })
+                        })
+                     })
                   })
                }
+
             })
          })
          describe('when player makes tries to make invalid move', () => {
