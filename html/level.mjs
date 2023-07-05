@@ -5,10 +5,10 @@ export const level1 = {
       [{ val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
       [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 0 }],
       [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }],
-      [{ val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
+      [{ val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 3 }, { val: 0 }],
       [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 0 }],
       [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
-      [{ val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 0 }],
+      [{ val: 0 }, { val: 3 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }, { val: 2 }, { val: 0 }],
       [{ val: 0 }, { val: 2 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 2 }, { val: 0 }],
       [{ val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }, { val: 0 }]
    ],

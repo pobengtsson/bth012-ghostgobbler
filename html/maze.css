@@ -1,7 +1,7 @@
 :root {
   --block-size: 7vh;
-  --dot-size: calc(var(--block-size) / 6);
-  --powerdot-size: calc(var(--block-size) / 4);
+  --dot-size: calc(var(--block-size) / 8);
+  --powerdot-size: calc(var(--block-size) / 3);
   --player-size: calc(var(--block-size) / 3 * 2);
   --ghost-size: var(--player-size);
 }

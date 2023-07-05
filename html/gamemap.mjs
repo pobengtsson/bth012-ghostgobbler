@@ -4,7 +4,7 @@ export const mazeKey = {
   0: 'wall',
   1: 'empty',
   2: 'dot',
-  3: 'power_dot',
+  3: 'powerdot',
   10: 'transporter',
   50: 'player',
   60: 'ghost'
