@@ -3,4 +3,8 @@ export class GameWonState {
       this.game = game
       this.lastScore = lastScore
    }
+
+   handleEvent(event) {
+      this.game.returnToMenu(this.lastScore)
+   }
 }
