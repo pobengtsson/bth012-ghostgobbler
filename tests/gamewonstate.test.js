@@ -1,4 +1,4 @@
-import {jest} from '@jest/globals'
+import { jest } from '@jest/globals'
 import { GameWonState } from '../html/states/gamewonstate.mjs'
 
 describe('GameWonState', ()=>{
